@@ -125,6 +125,59 @@ const allDoctors = async (req, res) => {
     }
 }
 
+const deleteDoctor = async (req, res) => {
+    try {
+        const docId = req.params.id;
+        const { confirmation } = req.query;
+
+        // Basic validation check
+        if (confirmation !== 'delete-confirmed') {
+            return res.status(400).json({
+                success: false,
+                message: 'Invalid deletion request'
+            });
+        }
+
+        // Check if doctor exists
+        const doctor = await doctorModel.findById(docId);
+        if (!doctor) {
+            return res.status(404).json({
+                success: false,
+                message: 'Doctor not found'
+            });
+        }
+
+        // Check for existing appointments
+        const appointments = await appointmentModel.find({
+            docId,
+            cancelled: false,
+            isCompleted: false
+        });
+
+        if (appointments.length > 0) {
+            return res.status(400).json({
+                success: false,
+                message: 'Cannot delete doctor with pending appointments'
+            });
+        }
+
+        // Delete the doctor
+        await doctorModel.findByIdAndDelete(docId);
+
+        res.json({
+            success: true,
+            message: 'Doctor deleted successfully'
+        });
+
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            success: false,
+            message: error.message || 'Internal server error'
+        });
+    }
+};
+
 // API to get dashboard data for admin panel
 const adminDashboard = async (req, res) => {
     try {
@@ -154,5 +207,6 @@ export {
     appointmentCancel,
     addDoctor,
     allDoctors,
-    adminDashboard
+    adminDashboard,
+    deleteDoctor 
 }
