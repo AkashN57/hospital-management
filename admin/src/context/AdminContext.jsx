@@ -13,7 +13,7 @@ const AdminContextProvider = (props) => {
     const [staffs, setStaffs] = useState([]);
     const [dashData, setDashData] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
-    // const [complaints, setComplaints] = useState([]);
+    const [complaints, setComplaints] = useState([]);
 
     // Getting all Doctors data from Database using API
     const getAllDoctors = async () => {
@@ -183,52 +183,52 @@ const AdminContextProvider = (props) => {
     };
 
     // Get all complaints
-    // const getAllComplaints = async () => {
-    //     try {
-    //         setIsLoading(true);
-    //         console.log('Current aToken:', aToken);
-    //         const { data } = await axios.get(
-    //             `${backendUrl}/api/admin/complaints`,
-    //             { headers: { aToken } }
-    //         );
-    //         if (data.success) {
-    //             setComplaints(data.complaints);
-    //         } else {
-    //             toast.error(data.message);
-    //         }
-    //     } catch (error) {
-    //         console.log('Error details:', error.response?.data || error.message);
-    //         toast.error(error.response?.data?.message || error.message);
-    //     } finally {
-    //         setIsLoading(false);
-    //     }
-    // };
+    const getAllComplaints = async () => {
+        try {
+            setIsLoading(true);
+            console.log('Current aToken:', aToken);
+            const { data } = await axios.get(
+                `${backendUrl}/api/admin/complaints`,
+                { headers: { aToken } }
+            );
+            if (data.success) {
+                setComplaints(data.complaints);
+            } else {
+                toast.error(data.message);
+            }
+        } catch (error) {
+            console.log('Error details:', error.response?.data || error.message);
+            toast.error(error.response?.data?.message || error.message);
+        } finally {
+            setIsLoading(false);
+        }
+    };
 
     // Update complaint status
-    // const updateComplaintStatus = async (complaintId, newStatus) => {
-    //     try {
-    //         setIsLoading(true);
-    //         const { data } = await axios.put(
-    //             `${backendUrl}/api/admin/complaints/${complaintId}`,
-    //             { status: newStatus },
-    //             { headers: { aToken } }
-    //         );
-    //         if (data.success) {
-    //             toast.success(data.message);
-    //             getAllComplaints();
-    //             return true;
-    //         } else {
-    //             toast.error(data.message);
-    //             return false;
-    //         }
-    //     } catch (error) {
-    //         console.error('Error updating complaint:', error);
-    //         toast.error(error.response?.data?.message || error.message);
-    //         return false;
-    //     } finally {
-    //         setIsLoading(false);
-    //     }
-    // };
+    const updateComplaintStatus = async (complaintId, newStatus) => {
+        try {
+            setIsLoading(true);
+            const { data } = await axios.put(
+                `${backendUrl}/api/admin/complaints/${complaintId}`,
+                { status: newStatus },
+                { headers: { aToken } }
+            );
+            if (data.success) {
+                toast.success(data.message);
+                getAllComplaints();
+                return true;
+            } else {
+                toast.error(data.message);
+                return false;
+            }
+        } catch (error) {
+            console.error('Error updating complaint:', error);
+            toast.error(error.response?.data?.message || error.message);
+            return false;
+        } finally {
+            setIsLoading(false);
+        }
+    };
 
     const value = {
         aToken,
@@ -249,9 +249,9 @@ const AdminContextProvider = (props) => {
         updateStaff,
         getStaffById,
         // Complaints related values
-        // complaints,
-        // getAllComplaints,
-        // updateComplaintStatus
+        complaints,
+        getAllComplaints,
+        updateComplaintStatus
     };
 
     return (

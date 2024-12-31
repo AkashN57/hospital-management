@@ -17,7 +17,7 @@ import Login from './pages/Login';
 import DoctorAppointments from './pages/Doctor/DoctorAppointments';
 import DoctorDashboard from './pages/Doctor/DoctorDashboard';
 import DoctorProfile from './pages/Doctor/DoctorProfile';
-// import Complaints from './pages/Admin/Complaints';
+import Complaints from './pages/Admin/Complaints';
 
 const App = () => {
 
@@ -33,8 +33,7 @@ const App = () => {
         <Routes>
           <Route path='/' element={<></>} />
           <Route path='/admin-dashboard' element={<Dashboard />} />
-          {/* <Route path='/complaints' element={<Complaints />} /> */}
-
+          <Route path='/complaints' element={<Complaints />} />
           <Route path='/all-appointments' element={<AllAppointments />} />
           <Route path='/add-doctor' element={<AddDoctor />} />
           <Route path='/Staff' element={<Staff />} />
