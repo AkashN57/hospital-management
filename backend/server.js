@@ -8,7 +8,7 @@ import doctorRouter from "./routes/doctorRoute.js"
 import adminRouter from "./routes/adminRoute.js"
 import staffRouter from "./routes/staffRoutes.js" 
 import complaintRouter from "./routes/complaintRoutes.js"  
-
+import reviewsRouter from "./routes/reviewRoutes.js"
 // app config
 const app = express()
 const port = process.env.PORT || 4000
@@ -24,8 +24,8 @@ app.use("/api/user", userRouter)
 app.use("/api/admin", adminRouter,staffRouter)
 app.use("/api/doctor", doctorRouter)
 
-// app.use("/api/reviews", reviewsRouter)
-app.use("/api/admin/complaints", complaintRouter) // Fix: Move complaints under admin
+app.use("/api/reviews", reviewsRouter)
+app.use("/api/admin/complaints", complaintRouter) 
 
 app.get("/", (req, res) => {
   res.send("API Working")
