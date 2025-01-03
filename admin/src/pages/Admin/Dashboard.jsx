@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import { assets } from '../../assets/assets'
 import { AdminContext } from '../../context/AdminContext'
 import { AppContext } from '../../context/AppContext'
+import ChatPopup from '../../components/ChatPopup'
 
 const Dashboard = () => {
 
@@ -59,7 +60,7 @@ const Dashboard = () => {
           ))}
         </div>
       </div>
-
+          <ChatPopup/>
     </div>
   )
 }
