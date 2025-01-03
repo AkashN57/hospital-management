@@ -17,7 +17,7 @@ const Navbar = () => {
   }
 
   return (
-    <div className='flex items-center justify-between text-sm py-4 mb-5 border-b border-b-[#ADADAD]'>
+    <div className='fixed top-0 left-0 w-full z-50 bg-white flex items-center justify-between text-sm py-4 px-4 border-b border-b-[#ADADAD]'>
       <img onClick={() => navigate('/')} className='w-44 cursor-pointer' src={assets.logo} alt="" />
       <ul className='md:flex items-start gap-5 font-medium hidden'>
         <NavLink to='/' >
@@ -71,6 +71,7 @@ const Navbar = () => {
             <NavLink onClick={() => setShowMenu(false)} to='/doctors' ><p className='px-4 py-2 rounded full inline-block'>ALL DOCTORS</p></NavLink>
             <NavLink onClick={() => setShowMenu(false)} to='/about' ><p className='px-4 py-2 rounded full inline-block'>ABOUT</p></NavLink>
             <NavLink onClick={() => setShowMenu(false)} to='/contact' ><p className='px-4 py-2 rounded full inline-block'>CONTACT</p></NavLink>
+            <NavLink onClick={() => setShowMenu(false)} to='/login' ><p className='px-4 py-2 rounded full inline-block'>CREATE AN ACCOUNT</p></NavLink>
           </ul>
         </div>
       </div>

@@ -56,7 +56,7 @@ const StaffList = () => {
     return (
         <div className='m-5 max-h-[90vh] overflow-y-scroll'>
             <div className="flex justify-between items-center mb-5">
-                <h1 className='text-lg font-medium'>All Staff Members</h1>
+                <h1 className='text-lg font-medium px-8'>All Staff Members</h1>
                 <Link 
                     to="/admin/add-staff" 
                     className="bg-primary text-white px-4 py-2 rounded-md hover:bg-primary/90"

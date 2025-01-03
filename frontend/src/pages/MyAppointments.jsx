@@ -147,7 +147,7 @@ const MyAppointments = () => {
   }, [token]);
 
   return (
-    <div>
+    <div className="pt-24">
       <p className="pb-3 mt-12 text-lg font-medium text-gray-600 border-b">
         My Appointments
       </p>
