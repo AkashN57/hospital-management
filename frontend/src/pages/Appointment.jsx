@@ -173,12 +173,7 @@ const Appointment = () => {
 
                         {/* Rating and Review Section */}
                         <div className="text-right">
-                            <div className="flex items-center gap-1 justify-end">
-                                <span className="text-yellow-400 text-xl">★</span>
-                                <span className="text-lg font-medium">
-                                    {docInfo.averageRating ? docInfo.averageRating.toFixed(1) : '0.0'}
-                                </span>
-                            </div>
+                            
                             <div className="flex flex-col gap-2">
                                 <button 
                                     onClick={() => {
@@ -187,7 +182,7 @@ const Appointment = () => {
                                     }}
                                     className="text-sm text-primary hover:underline"
                                 >
-                                    {docInfo.totalReviews || 0} reviews
+                                    See all reviews.
                                 </button>
                                 <button
                                     onClick={handleReviewClick}

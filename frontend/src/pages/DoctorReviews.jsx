@@ -151,7 +151,7 @@ const DoctorReviewsPage = () => {
             {/* Header */}
             <div className="mb-8">
                 <Link 
-                    to={`/appointment/${docId}`}
+                    to={`/doctors/`}
                     className="flex items-center gap-2 text-gray-600 hover:text-primary mb-4"
                 >
                     <ArrowLeft className="w-5 h-5" />
@@ -167,23 +167,7 @@ const DoctorReviewsPage = () => {
                     <div>
                         <h1 className="text-3xl font-medium">{doctor.name}</h1>
                         <p className="text-gray-600">{doctor.speciality} - {doctor.degree}</p>
-                        <div className="flex items-center gap-2 mt-2">
-                            <div className="flex">
-                                {[...Array(5)].map((_, i) => (
-                                    <Star
-                                        key={i}
-                                        className={`w-5 h-5 ${
-                                            i < Math.round(doctor.averageRating || 0)
-                                                ? 'fill-yellow-400 stroke-yellow-400'
-                                                : 'stroke-gray-300'
-                                        }`}
-                                    />
-                                ))}
-                            </div>
-                            <span className="text-gray-600">
-                                ({doctor.averageRating?.toFixed(1) || '0.0'}) • {doctor.totalReviews || 0} reviews
-                            </span>
-                        </div>
+                       
                     </div>
                 </div>
             </div>
